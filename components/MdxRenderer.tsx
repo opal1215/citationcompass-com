@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import AnswerCard from './AnswerCard';
 import DataBox from './DataBox';
 import RelatedLinks from './RelatedLinks';

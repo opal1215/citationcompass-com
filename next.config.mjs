@@ -1,14 +1,10 @@
-﻿import createMDX from "@next/mdx";
-import { withContentlayer } from "next-contentlayer";
+﻿// 这将是我们最终的目标版本
+import { withContentlayer } from 'next-contentlayer2';
 
-const withMDX = createMDX({
-  extension: /\.mdx?$/,
-});
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 让 Next 识别 MD/MDX 扩展名
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
 };
 
-export default withContentlayer(withMDX(nextConfig));
+export default withContentlayer(nextConfig);
