@@ -1,0 +1,11 @@
+﻿node_modules
+.next
+out
+.contentlayer
+dist
+build
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.env*
