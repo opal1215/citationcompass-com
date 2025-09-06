@@ -1,25 +1,9 @@
-﻿// next.config.mjs
-import createMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+﻿import { withContentlayer } from 'next-contentlayer2';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
-  // 让 Next 识别 .md / .mdx 文件
-  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-}
+};
 
-// 包上 MDX 插件
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-    ],
-  },
-})
-
-export default withMDX(nextConfig)
+export default withContentlayer(nextConfig);
