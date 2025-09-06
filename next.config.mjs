@@ -1,15 +1,8 @@
-﻿// next.config.mjs
+// next.config.mjs
 import createMDX from '@next/mdx'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 让 App Router 能识别 .md / .mdx 页面（如 /app/(legal) 下的 MDX）
-  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-  experimental: { mdxRs: true },
-}
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
@@ -19,4 +12,12 @@ const withMDX = createMDX({
   },
 })
 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // 让 App Router 识别 .md / .mdx 页面
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  // Next 14 默认使用 mdx-rs，这里不再显式打开，减少“实验项”表面因素
+}
+
 export default withMDX(nextConfig)
+
