@@ -1,9 +1,12 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
-import rehypeSlug from 'rehype-slug';
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 export const Guide = defineDocumentType(() => ({
   name: 'Guide',
-  filePathPattern: `**/*.mdx`,
+  filePathPattern: '**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -19,13 +22,18 @@ export const Guide = defineDocumentType(() => ({
       resolve: (doc) => `/apa-youtube/${doc.slug}`,
     },
   },
-}));
+}))
 
 export default makeSource({
   contentDirPath: 'content/apa-youtube',
   documentTypes: [Guide],
   mdx: {
-    rehypePlugins: [rehypeSlug],
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+    ],
   },
-});
+  // 仅为消除“Importing from `contentlayer/generated` might not work”警告
+  disableImportAliasWarning: true,
+})
