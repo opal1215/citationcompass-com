@@ -1,24 +1,10 @@
-"use client";
+﻿"use client";
+import React from "react";
 
-import React from 'react';
-import { useMDXComponent } from 'next-contentlayer2/hooks';
-import AnswerCard from './AnswerCard';
-import DataBox from './DataBox';
-import RelatedLinks from './RelatedLinks';
-import AdSlot from './AdSlot';
-import FAQSection from './FAQSection';
-
-export default function MdxRenderer({ code }: { code: string }) {
-  const Component = useMDXComponent(code);
-  return (
-    <Component
-      components={{
-        AnswerCard,
-        DataBox,
-        RelatedLinks,
-        AdSlot,
-        FAQSection,
-      }}
-    />
-  );
+/**
+ * 临时占位渲染器：避免 next-contentlayer2/hooks 依赖导致构建失败。
+ * 以后如果要用 Contentlayer 渲染 MDX code，可再换回正式实现。
+ */
+export default function MdxRenderer(_props: { code?: string }) {
+  return <div />;
 }
