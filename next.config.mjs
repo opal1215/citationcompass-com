@@ -1,10 +1,19 @@
-﻿// 这将是我们最终的目标版本
+﻿// next.config.mjs
+import createMDX from '@next/mdx';
 import { withContentlayer } from 'next-contentlayer2';
 
-/** @type {import('next').NextConfig} */
+const withMDX = createMDX({
+  // 如需 remark/rehype 插件可在这里配置
+  options: {
+    // remarkPlugins: [],
+    // rehypePlugins: [],
+  },
+});
+
 const nextConfig = {
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
+  // 让 Next 识别 .md / .mdx
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 };
 
-export default withContentlayer(nextConfig);
+export default withContentlayer(withMDX(nextConfig));
